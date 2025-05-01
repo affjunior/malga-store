@@ -25,7 +25,22 @@
   --padding-xlarge: 1.5rem;
   --padding-xxlarge: 2rem;
 
+  --border-radius-small: 0.125rem;
+  --border-radius-medium: 0.25rem;
+  --border-radius-large: 0.5rem;
+  --border-radius-xlarge: 1rem;
+  --border-radius-xxlarge: 2rem;
+
+  --gap-small: 0.5rem;
+  --gap-medium: 0.75rem;
+  --gap-large: 1rem;
+  --gap-xlarge: 1.5rem;
+  --gap-xxlarge: 2rem;
+
+  --table-header-color: #242424;
+
   --color-hover: #626252;
+  --color-hover-table-header: #262626;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,6 +48,8 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     --border-color: #262626;
+
+    --table-header-color: #a1a1a1;
   }
 }
 
