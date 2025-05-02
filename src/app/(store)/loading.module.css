@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--background);
   z-index: 9999;
 }
 

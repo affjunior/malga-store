@@ -23,7 +23,7 @@ export default function Checkout() {
   }
 
   const handleQuantityChange = (id, newQuantity) => {
-    if (newQuantity < 1) return
+    if (newQuantity < 1) handleRemoveItem(id)
 
     setItems(
       itens.map((item) =>
@@ -86,6 +86,7 @@ export default function Checkout() {
                 <Button
                   type="submit"
                   onClick={() => handleClick()}
+                  disabled={!isPaymentFormValid || !isCustomerFormValid}
                 >
                   Comprar agora
                 </Button>
