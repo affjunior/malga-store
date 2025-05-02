@@ -1,0 +1,63 @@
+{
+    "transactions": {
+        "status": "Aprovado",
+        "amount": 20302.58,
+        "customer": {
+            "firstName": "João",
+            "lastName": "da Silva",
+            "document": {
+                "type": "cpf",
+                "number": "1234567890"
+            },
+            "address": {
+                "city": "São Paulo",
+                "street": "Rua das Flores",
+                "number": "123",
+                "country": "Brasil",
+                "state": "SP",
+                "neighborhood": "Bairro das Flores",
+                "zipCode": "1234567890"
+            }
+        },
+        "items": [
+            {
+                "id": 1,
+                "name": "Iphone 15 Pro Max",
+                "price": 15000.500,
+                "quantity": 1,
+                "image": "/iphone.svg"
+            },
+            {
+                "id": 2,
+                "name": "Ipad 11",
+                "price": 5000.100,
+                "quantity": 1,
+                "image": "/ipad.svg"
+            },
+            {
+                "id": 3,
+                "name": "Capinha Iphone 15 Pro Max",
+                "price": 200.99,
+                "quantity": 1,
+                "image": "/capinha-iphone.jpeg"
+            },
+            {
+                "id": 4,
+                "name": "Capinha Ipad 11",
+                "price": 100.99,
+                "quantity": 1,
+                "image": "/capinha-ipad.webp"
+            }
+        ],
+        "paymentMethod": {
+            "type": "Cartão de crédito",
+            "card": {
+                "firstDigits": "1234",
+                "lastDigits": "5678",
+                "holderName": "João da Silva",
+                "expirationDate": "01/2025",
+                "installments": 1
+            }
+        }
+    }
+}

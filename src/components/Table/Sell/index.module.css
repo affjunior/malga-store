@@ -64,3 +64,23 @@
 .statusPending {
   color: var(--color-status-pending);
 }
+
+.statusProcessing {
+  color: var(--color-status-processing);
+}
+
+.statusPaid {
+  color: var(--color-status-paid);
+}
+
+.statusRefunded {
+  color: var(--color-status-refunded);
+}
+
+.statusFailed {
+  color: var(--color-status-failed);
+}
+
+.statusCancelled {
+  color: var(--color-status-cancelled);
+}

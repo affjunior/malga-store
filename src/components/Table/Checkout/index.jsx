@@ -35,7 +35,7 @@ const TableCheckout = ({ itens = [], readOnly = false, OnRemoveItem, onChangeQua
                     />
                   </td>
                   <td className={style.tableData}>{item.name}</td>
-                  <td className={style.tableData}>{item.price.toFixed(2)}</td>
+                  <td className={style.tableData}>{formatPrice(item.price)}</td>
                   <td className={style.tableData}>
                     {!readOnly ? (
                       <div className={style.quantityContainer}>

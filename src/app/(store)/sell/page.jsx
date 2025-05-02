@@ -1,25 +1,30 @@
+'use client'
+
 import Card from '@/components/Card'
 import style from './page.module.css'
-import TableCheckout from '@/components/Table/Checkout'
 import TableSell from '@/components/Table/Sell'
+import { useEffect, useState } from 'react'
 
 export default function Sell() {
 
-  const products = [
-    {
-      id: "1234",
-      numero_pedido: '#123',
-      metodo: 'Cartão de credito',
-      status: 'pending'
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch('/api/orders')
+      const data = await response.json()
+      setData(data)
+      console.log(data)
     }
-  ]
+    fetchProducts()
+  }, [])
 
   return (
     <main className={style.main}>
       <h1 className={style.title}>Transaçoes</h1>
       <div className={style.containerGrid}>
         <Card title="Ultimas vendas">
-          <TableSell itens={products} />
+          <TableSell items={data} />
         </Card>
       </div>
     </main>

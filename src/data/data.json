@@ -1,0 +1,41 @@
+{
+  "orders": [
+    {
+      "status": "authorized",
+      "amount": 0,
+      "customer": {
+        "firstName": "",
+        "lastName": "",
+        "document": {
+          "type": "cpf",
+          "number": ""
+        },
+        "address": {
+          "city": "",
+          "street": "",
+          "number": "",
+          "country": "",
+          "state": "",
+          "neighborhood": ""
+        }
+      },
+      "items": [
+        {
+          "name": "",
+          "quantity": 0,
+          "amount": 0
+        }
+      ],
+      "paymentMethod": {
+        "type": "card",
+        "card": {
+          "firstDigits": "",
+          "lastDigits": "",
+          "holderName": "",
+          "expirationDate": "",
+          "installments": 0
+        }
+      }
+    }
+  ]
+} 

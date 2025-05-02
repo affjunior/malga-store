@@ -44,7 +44,8 @@ export default [
       '**/.next/**',
       '**/.turbo/**',
       '**/.vercel/**',
-      '**/.output/**'
+      '**/.output/**',
+      'src/app/api/products/buy/route.js'
     ]
   }
 ]

@@ -1,41 +1,28 @@
 'use client'
 
-import CustomerForm from "@/components/Form/Customer"
-import PaymentForm from "@/components/Form/Payment"
 import TableCheckout from "@/components/Table/Checkout"
 import { useParams } from "next/navigation"
 import style from './index.module.css'
 import Card from "@/components/Card"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import PanelCustomer from "@/components/Panel/Customer"
 import PanelPayment from "@/components/Panel/Payment"
+import { formatPrice } from "@/utils"
 export default function SellDetail() {
 
   const { id } = useParams()
 
-  const [itens, setItems] = useState([
-    {
-      id: 1,
-      name: 'Premium T-Shirt',
-      price: 29.99,
-      quantity: 2,
-      image: '/placeholder.svg?height=80&width=80&text=T-Shirt'
-    },
-    {
-      id: 2,
-      name: 'Wireless Headphones',
-      price: 89.99,
-      quantity: 1,
-      image: '/placeholder.svg?height=80&width=80&text=Headphones'
-    },
-    {
-      id: 3,
-      name: 'Smartphone Case',
-      price: 19.99,
-      quantity: 1,
-      image: '/placeholder.svg?height=80&width=80&text=Case'
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch(`/api/orders/${id}`)
+      const data = await response.json()
+      setData(data)
+      console.log(data)
     }
-  ])
+    fetchProducts()
+  }, [])
 
   return (
     <main className={style.main}>
@@ -43,31 +30,28 @@ export default function SellDetail() {
       <div className={style.containerGrid}>
         <Card title="Itens no carrinho">
           <TableCheckout
-            itens={itens}
+            itens={data.items}
             readOnly={true}
             OnRemoveItem={(id) => handleRemoveItem(id)}
             onChangeQuantity={(id, quantity) =>
               handleQuantityChange(id, quantity)
             }
           />
-          {itens.length > 0 && (
+          {data.items?.length > 0 && (
             <div className={style.totalContainer}>
               <span className={style.totalLabel}>Total:</span>
               <span className={style.totalValue}>
-                R$
-                {itens
-                  .reduce((acc, item) => acc + item.price * item.quantity, 0)
-                  .toFixed(2)}
+                {formatPrice(data.items?.reduce((acc, item) => acc + item?.price * item?.quantity, 0))}
               </span>
             </div>
           )}
         </Card>
         <div className={style.column}>
           <Card title="Informações do cliente">
-            <PanelCustomer />
+            <PanelCustomer data={data.customer} />
           </Card>
           <Card title="Informações de pagamento">
-            <PanelPayment />
+            <PanelPayment data={data.paymentMethod} amount={data?.amount} status={data?.status} />
           </Card>
         </div>
       </div>

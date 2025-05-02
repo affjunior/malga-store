@@ -4,7 +4,7 @@ import PAYMENT_STATUS from '@/app/enum/paymentStatus'
 import style from './index.module.css'
 import { useRouter } from 'next/navigation'
 
-const TableSell = ({ itens = [1, 2] }) => {
+const TableSell = ({ items = [] }) => {
 
   const router = useRouter()
 
@@ -56,13 +56,13 @@ const TableSell = ({ itens = [1, 2] }) => {
         </thead>
 
         <tbody className={style.tbody}>
-          {itens.map((item) => (
+          {items?.map((item) => (
             <tr className={style.tableRow} key={item.id} onClick={() => {
               router.push(`/sell/${item.id}`)
             }}>
-              <td className={style.tableData}>#123</td>
+              <td className={style.tableData}>#{item.id}</td>
               <td className={style.tableData}>
-                Cartáo de Crédito
+                {item.payment}
               </td>
               <td className={style.tableData}>
                 {getStatusDisplay(item.status)}

@@ -8,8 +8,10 @@ import CustomerForm from '@/components/Form/Customer'
 import PaymentForm from '@/components/Form/Payment'
 import Button from '@/components/Button'
 import { formatPrice } from '@/utils'
+import { useRouter } from 'next/navigation'
 
 export default function Checkout() {
+  const router = useRouter()
   const numero_pedido = 123
 
   const [isPaymentFormValid, setPaymentFormValid] = useState(false)
@@ -38,7 +40,9 @@ export default function Checkout() {
     setPaymentFormValid(isValid)
   }
 
-  const handleClick = () => { }
+  const handleClick = () => {
+    router.push(`/success`)
+  }
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -48,7 +52,6 @@ export default function Checkout() {
     }
 
     fetchProducts()
-    
   }, [])
 
   return (
@@ -83,7 +86,6 @@ export default function Checkout() {
                 <Button
                   type="submit"
                   onClick={() => handleClick()}
-                  disabled={!isPaymentFormValid || !isCustomerFormValid}
                 >
                   Comprar agora
                 </Button>

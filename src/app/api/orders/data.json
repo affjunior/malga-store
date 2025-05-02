@@ -1,0 +1,24 @@
+{
+    "orders": [
+        {
+            "id": 1,
+            "payment": "Cartão de crédito",
+            "status": "pending"
+        },
+        {
+            "id": 2,
+            "payment": "Cartão de crédito",
+            "status": "paid"
+        },
+        {
+            "id": 3,
+            "payment": "Cartão de crédito",
+            "status": "refunded"
+        },
+        {
+            "id": 4,
+            "payment": "Cartão de crédito",
+            "status": "processing"
+        }        
+    ]
+}
