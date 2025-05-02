@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Iphone 15 Pro Max",
+      "price": 15000.500,
+      "quantity": 1,
+      "image": "/iphone.svg"
+    },
+    {
+      "id": 2,
+      "name": "Ipad 11",
+      "price": 5000.100,
+      "quantity": 1,
+      "image": "/ipad.svg"
+    },
+    {
+      "id": 3,
+      "name": "Capinha Iphone 15 Pro Max",
+      "price": 200.99,
+      "quantity": 1,
+      "image": "/capinha-iphone.jpeg"
+    },
+    {
+      "id": 4,
+      "name": "Capinha Ipad 11",
+      "price": 100.99,
+      "quantity": 1,
+      "image": "/capinha-ipad.webp"
+    }
+  ]
+}

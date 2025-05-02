@@ -107,3 +107,7 @@
   font-weight: 700;
   text-align: center;
 }
+
+.nowrap {
+  white-space: nowrap;
+}

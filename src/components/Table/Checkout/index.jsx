@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import style from './index.module.css'
 import { FaRegTrashAlt } from 'react-icons/fa'
+import { formatPrice } from '@/utils'
 
 const TableCheckout = ({ itens = [], readOnly = false, OnRemoveItem, onChangeQuantity }) => {
   return (
@@ -60,8 +61,8 @@ const TableCheckout = ({ itens = [], readOnly = false, OnRemoveItem, onChangeQua
                       <span className={style.quantity}>{item.quantity}</span>
                     )}
                   </td>
-                  <td className={style.tableData}>
-                    R$ {(item.price * item.quantity).toFixed(2)}
+                  <td className={`${style.tableData} ${style.nowrap}`}>
+                    {formatPrice(item.price * item.quantity)}
                   </td>
                   {!readOnly && (
                     <td className={style.tableData}>

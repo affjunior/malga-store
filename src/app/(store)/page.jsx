@@ -3,40 +3,18 @@
 import Card from '@/components/Card'
 import style from './page.module.css'
 import TableCheckout from '@/components/Table/Checkout'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CustomerForm from '@/components/Form/Customer'
 import PaymentForm from '@/components/Form/Payment'
 import Button from '@/components/Button'
+import { formatPrice } from '@/utils'
 
 export default function Checkout() {
-  const numero_pedido = 123456789
+  const numero_pedido = 123
 
   const [isPaymentFormValid, setPaymentFormValid] = useState(false)
   const [isCustomerFormValid, setCustomerFormValid] = useState(false)
-
-  const [itens, setItems] = useState([
-    {
-      id: 1,
-      name: 'Premium T-Shirt',
-      price: 29.99,
-      quantity: 2,
-      image: '/placeholder.svg?height=80&width=80&text=T-Shirt'
-    },
-    {
-      id: 2,
-      name: 'Wireless Headphones',
-      price: 89.99,
-      quantity: 1,
-      image: '/placeholder.svg?height=80&width=80&text=Headphones'
-    },
-    {
-      id: 3,
-      name: 'Smartphone Case',
-      price: 19.99,
-      quantity: 1,
-      image: '/placeholder.svg?height=80&width=80&text=Case'
-    }
-  ])
+  const [itens, setItems] = useState([])
 
   const handleRemoveItem = (id) => {
     setItems(itens.filter((item) => item.id !== id))
@@ -62,6 +40,17 @@ export default function Checkout() {
 
   const handleClick = () => { }
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch('/api/products')
+      const data = await response.json()
+      setItems(data)
+    }
+
+    fetchProducts()
+    
+  }, [])
+
   return (
     <main className={style.main}>
       <h1 className={style.title}>Pedido #{numero_pedido}</h1>
@@ -78,31 +67,30 @@ export default function Checkout() {
             <div className={style.totalContainer}>
               <span className={style.totalLabel}>Total:</span>
               <span className={style.totalValue}>
-                R$
-                {itens
-                  .reduce((acc, item) => acc + item.price * item.quantity, 0)
-                  .toFixed(2)}
+                {formatPrice(itens.reduce((acc, item) => acc + item.price * item.quantity, 0))}
               </span>
             </div>
           )}
         </Card>
-        <div className={style.column}>
-          <Card title="Informações do cliente">
-            <CustomerForm onValidationChange={handleValidationChange} />
-          </Card>
-          <Card title="Forma de pagamento">
-            <PaymentForm onValidationChange={handlePaymentValidationChange} />
-            <div className={style.buttonContainer}>
-              <Button
-                type="submit"
-                onClick={() => handleClick()}
-                disabled={!isPaymentFormValid || !isCustomerFormValid}
-              >
-                Comprar agora
-              </Button>
-            </div>
-          </Card>
-        </div>
+        {itens.length > 0 && (
+          <div className={style.column}>
+            <Card title="Informações do cliente">
+              <CustomerForm onValidationChange={handleValidationChange} />
+            </Card>
+            <Card title="Forma de pagamento">
+              <PaymentForm onValidationChange={handlePaymentValidationChange} />
+              <div className={style.buttonContainer}>
+                <Button
+                  type="submit"
+                  onClick={() => handleClick()}
+                  disabled={!isPaymentFormValid || !isCustomerFormValid}
+                >
+                  Comprar agora
+                </Button>
+              </div>
+            </Card>
+          </div>
+        )}
       </div>
     </main>
   )
