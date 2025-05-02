@@ -11,5 +11,5 @@
   font-size: var(--font-size-xlarge);
   font-weight: 700;
   line-height: var(--line-height-xlarge);
-  padding: var(--padding-medium) var(--padding-large);
+  padding: var(--padding-medium) var(--padding-xlarge);
 }

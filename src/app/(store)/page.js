@@ -4,6 +4,7 @@ import Card from '@/components/Card'
 import style from './page.module.css'
 import TableCheckout from '@/components/Table'
 import { useState } from 'react'
+import CustomerForm from '@/components/Form/Customer'
 
 export default function Checkout() {
   const numero_pedido = 123456789
@@ -46,6 +47,10 @@ export default function Checkout() {
     )
   }
 
+  const handleValidationChange = ({ isValid }) => {
+    console.log('Form is valid:', isValid)
+  }
+
   return (
     <main className={style.main}>
       <h1 className={style.title}>Pedido #{numero_pedido}</h1>
@@ -59,7 +64,9 @@ export default function Checkout() {
             }
           />
         </Card>
-        <Card title="Informações do cliente"></Card>
+        <Card title="Informações do cliente">
+          <CustomerForm onValidationChange={handleValidationChange} />
+        </Card>
         <Card title="Forma de pagamento"></Card>
       </div>
     </main>

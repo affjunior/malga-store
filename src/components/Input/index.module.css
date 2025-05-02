@@ -1,0 +1,54 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-small);
+  width: 100%;
+}
+
+.label {
+  color: var(--foreground);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.input {
+  width: 100%;
+  padding: var(--padding-medium);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-medium);
+  font-size: var(--font-size-medium);
+  color: var(--foreground);
+  background-color: var(--background);
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.helpText {
+  font-size: var(--font-size-small);
+  color: var(--foreground);
+  opacity: 0.8;
+}
+
+.inputContainer.error .label {
+  color: var(--error);
+}
+
+.inputContainer.error .input {
+  border-color: var(--error);
+}
+
+.inputContainer.error .helpText {
+  color: var(--error);
+}
+
+/* Disabled state */
+.input:disabled {
+  background-color: var(--background-disabled);
+  cursor: not-allowed;
+  opacity: 0.7;
+}

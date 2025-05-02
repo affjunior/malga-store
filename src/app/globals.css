@@ -41,6 +41,8 @@
 
   --color-hover: #626252;
   --color-hover-table-header: #262626;
+
+  --error: #ff0000
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,6 +52,8 @@
     --border-color: #262626;
 
     --table-header-color: #a1a1a1;
+
+    --error: #ff0000
   }
 }
 
