@@ -42,3 +42,30 @@
     grid-column: 3 / span 3;
   }
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding: var(--padding-xlarge);
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: var(--padding-xlarge);
+  color: var(--foreground);
+}
+
+.totalLabel {
+  font-size: var(--font-size-xlarge);
+  font-weight: 700;
+  line-height: var(--line-height-xlarge);
+}
+
+.totalValue {
+  font-size: var(--font-size-xlarge);
+  font-weight: 700;
+  line-height: var(--line-height-xlarge);
+  margin-left: var(--padding-medium);
+}

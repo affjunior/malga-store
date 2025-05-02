@@ -1,0 +1,57 @@
+.buttonWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  padding: var(--padding-medium);
+  background-color: var(--foreground);
+  color: var(--background);
+  border: none;
+  border-radius: var(--border-radius-medium);
+  font-size: var(--font-size-medium);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--padding-small) var(--padding-medium);
+  background-color: var(--foreground);
+  color: var(--background);
+  font-size: var(--font-size-small);
+  border-radius: var(--border-radius-small);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--foreground) transparent transparent transparent;
+}
+
+.button:disabled:hover + .tooltip {
+  opacity: 1;
+}

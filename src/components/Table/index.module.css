@@ -90,3 +90,20 @@
   width: 56px;
   height: 56px;
 }
+
+.emptyCartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--padding-xlarge);
+}
+
+.emptyCartText {
+  color: var(--foreground);
+  font-size: var(--font-size-xlarge);
+  font-weight: 700;
+  text-align: center;
+}

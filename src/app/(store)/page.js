@@ -5,9 +5,14 @@ import style from './page.module.css'
 import TableCheckout from '@/components/Table'
 import { useState } from 'react'
 import CustomerForm from '@/components/Form/Customer'
+import PaymentForm from '@/components/Form/Payment'
+import Button from '@/components/Button'
 
 export default function Checkout() {
   const numero_pedido = 123456789
+
+  const [isPaymentFormValid, setPaymentFormValid] = useState(false)
+  const [isCustomerFormValid, setCustomerFormValid] = useState(false)
 
   const [itens, setItems] = useState([
     {
@@ -48,8 +53,14 @@ export default function Checkout() {
   }
 
   const handleValidationChange = ({ isValid }) => {
-    console.log('Form is valid:', isValid)
+    setCustomerFormValid(isValid)
   }
+
+  const handlePaymentValidationChange = ({ isValid }) => {
+    setPaymentFormValid(isValid)
+  }
+
+  const handleClick = () => {}
 
   return (
     <main className={style.main}>
@@ -63,11 +74,33 @@ export default function Checkout() {
               handleQuantityChange(id, quantity)
             }
           />
+          {itens.length > 0 && (
+            <div className={style.totalContainer}>
+              <span className={style.totalLabel}>Total:</span>
+              <span className={style.totalValue}>
+                R$
+                {itens
+                  .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                  .toFixed(2)}
+              </span>
+            </div>
+          )}
         </Card>
         <Card title="Informações do cliente">
           <CustomerForm onValidationChange={handleValidationChange} />
         </Card>
-        <Card title="Forma de pagamento"></Card>
+        <Card title="Forma de pagamento">
+          <PaymentForm onValidationChange={handlePaymentValidationChange} />
+          <div className={style.buttonContainer}>
+            <Button
+              type="submit"
+              onClick={() => handleClick()}
+              disabled={!isPaymentFormValid || !isCustomerFormValid}
+            >
+              Comprar agora
+            </Button>
+          </div>
+        </Card>
       </div>
     </main>
   )

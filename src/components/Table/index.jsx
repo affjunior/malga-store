@@ -71,7 +71,10 @@ const TableCheckout = ({ itens = [], OnRemoveItem, onChangeQuantity }) => {
           </table>
         </div>
       ) : (
-        <span className={style.emptyCart}>Seu carrinho está vazio</span>
+        <div className={style.emptyCartContainer}>
+<span className={style.emptyCart}>Seu carrinho está vazio</span>
+        </div>
+
       )}
     </>
   )
