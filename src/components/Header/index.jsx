@@ -11,7 +11,7 @@ const Header = () => {
           <a href="/" className={style.hyperlink}>
             Carrinho
           </a>
-          <a href="/" className={style.hyperlink}>
+          <a href="/sell" className={style.hyperlink}>
             Vendas
           </a>
         </nav>

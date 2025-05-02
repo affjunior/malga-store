@@ -1,6 +1,8 @@
+'use client'
+
 import { forwardRef } from 'react'
 import style from './index.module.css'
-import { useMask } from '@react-input/mask'
+import { PatternFormat } from 'react-number-format';
 
 const Input = forwardRef(
   (
@@ -14,18 +16,19 @@ const Input = forwardRef(
       helpText,
       error,
       mask,
-      replacement,
       ...rest
     },
     ref
   ) => {
-    // Only apply mask if mask prop is provided
-    if (mask) {
-      useMask({
-        mask,
-        replacement,
-        ref: { current: ref?.current }
-      })
+    const inputProps = {
+      className: style.input,
+      type: type,
+      id: id,
+      name: name,
+      onChange: onChange,
+      placeholder: placeholder,
+      inputMode: mask ? "numeric" : undefined,
+      ...rest
     }
 
     return (
@@ -33,16 +36,20 @@ const Input = forwardRef(
         <label className={style.label} htmlFor={id}>
           {title}
         </label>
-        <input
-          ref={ref}
-          className={style.input}
-          type={type}
-          id={id}
-          name={name}
-          onChange={onChange}
-          placeholder={placeholder}
-          {...rest}
-        />
+        {mask ? (
+          <PatternFormat
+            format={mask}
+            allowEmptyFormatting
+            mask="_"
+            {...inputProps}
+            getInputRef={ref}
+          />
+        ) : (
+          <input
+            {...inputProps}
+            ref={ref}
+          />
+        )}
         {(error || helpText) && (
           <span className={`${style.helpText} ${error ? style.errorText : ''}`}>
             {error || helpText}

@@ -2,7 +2,7 @@
 
 import Card from '@/components/Card'
 import style from './page.module.css'
-import TableCheckout from '@/components/Table'
+import TableCheckout from '@/components/Table/Checkout'
 import { useState } from 'react'
 import CustomerForm from '@/components/Form/Customer'
 import PaymentForm from '@/components/Form/Payment'
@@ -60,7 +60,7 @@ export default function Checkout() {
     setPaymentFormValid(isValid)
   }
 
-  const handleClick = () => {}
+  const handleClick = () => { }
 
   return (
     <main className={style.main}>
@@ -86,21 +86,23 @@ export default function Checkout() {
             </div>
           )}
         </Card>
-        <Card title="Informações do cliente">
-          <CustomerForm onValidationChange={handleValidationChange} />
-        </Card>
-        <Card title="Forma de pagamento">
-          <PaymentForm onValidationChange={handlePaymentValidationChange} />
-          <div className={style.buttonContainer}>
-            <Button
-              type="submit"
-              onClick={() => handleClick()}
-              disabled={!isPaymentFormValid || !isCustomerFormValid}
-            >
-              Comprar agora
-            </Button>
-          </div>
-        </Card>
+        <div className={style.column}>
+          <Card title="Informações do cliente">
+            <CustomerForm onValidationChange={handleValidationChange} />
+          </Card>
+          <Card title="Forma de pagamento">
+            <PaymentForm onValidationChange={handlePaymentValidationChange} />
+            <div className={style.buttonContainer}>
+              <Button
+                type="submit"
+                onClick={() => handleClick()}
+                disabled={!isPaymentFormValid || !isCustomerFormValid}
+              >
+                Comprar agora
+              </Button>
+            </div>
+          </Card>
+        </div>
       </div>
     </main>
   )

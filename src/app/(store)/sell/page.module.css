@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-xxlarge);
+  width: 100%;
+}
+
+.title {
+  font-size: var(--font-size-xxlarge);
+  font-weight: 700;
+  line-height: var(--line-height-xlarge);
+  margin-bottom: var(--padding-xlarge);
+}

@@ -64,8 +64,7 @@ const CustomerForm = ({ onValidationChange }) => {
         id="phone"
         title="Telefone"
         placeholder="(xx) xxxxx-xxxx"
-        mask="(__) _____-____"
-        replacement={{ _: /\d/ }}
+        mask="(##) #####-####"
         error={errors.phone?.message}
         helpText={errors.phone?.message}
         ref={phoneRegister.ref}

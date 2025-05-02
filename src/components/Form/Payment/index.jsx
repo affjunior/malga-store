@@ -42,8 +42,7 @@ const PaymentForm = ({ onValidationChange }) => {
         id="cardNumber"
         title="Número do Cartão"
         placeholder="0000 0000 0000 0000"
-        mask="____ ____ ____ ____"
-        replacement={{ _: /\d/ }}
+        mask="#### #### #### ####"
         error={errors.cardNumber?.message}
         helpText={errors.cardNumber?.message}
         ref={cardNumberRegister.ref}
@@ -59,8 +58,7 @@ const PaymentForm = ({ onValidationChange }) => {
           id="expirationDate"
           title="Data de Expiração"
           placeholder="MM/AA"
-          mask="__/__"
-          replacement={{ _: /\d/ }}
+          mask="##/##"
           error={errors.expirationDate?.message}
           helpText={errors.expirationDate?.message}
           ref={expirationRegister.ref}
@@ -75,8 +73,7 @@ const PaymentForm = ({ onValidationChange }) => {
           id="cvv"
           title="CVV"
           placeholder="000"
-          mask="___"
-          replacement={{ _: /\d/ }}
+          mask="###"
           error={errors.cvv?.message}
           helpText={errors.cvv?.message}
           ref={cvvRegister.ref}
