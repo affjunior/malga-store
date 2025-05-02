@@ -60,3 +60,7 @@
   width: 100%;
   max-width: 260px;
 }
+
+.statusPending {
+  color: var(--color-status-pending);
+}

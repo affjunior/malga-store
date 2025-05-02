@@ -2,7 +2,7 @@ import Image from 'next/image'
 import style from './index.module.css'
 import { FaRegTrashAlt } from 'react-icons/fa'
 
-const TableCheckout = ({ itens = [], OnRemoveItem, onChangeQuantity }) => {
+const TableCheckout = ({ itens = [], readOnly = false, OnRemoveItem, onChangeQuantity }) => {
   return (
     <>
       {itens.length > 0 ? (
@@ -15,7 +15,9 @@ const TableCheckout = ({ itens = [], OnRemoveItem, onChangeQuantity }) => {
                 <th className={style.tableHeader}>Preço</th>
                 <th className={style.tableHeader}>Quantidade</th>
                 <th className={style.tableHeader}>Total</th>
-                <th className={style.tableHeader}></th>
+                {!readOnly && (
+                  <th className={style.tableHeader}></th>
+                )}
               </tr>
             </thead>
 
@@ -34,37 +36,43 @@ const TableCheckout = ({ itens = [], OnRemoveItem, onChangeQuantity }) => {
                   <td className={style.tableData}>{item.name}</td>
                   <td className={style.tableData}>{item.price.toFixed(2)}</td>
                   <td className={style.tableData}>
-                    <div className={style.quantityContainer}>
-                      <button
-                        className={style.buttonQuantity}
-                        onClick={() =>
-                          onChangeQuantity(item.id, item.quantity - 1)
-                        }
-                      >
-                        -
-                      </button>
+                    {!readOnly ? (
+                      <div className={style.quantityContainer}>
+                        <button
+                          className={style.buttonQuantity}
+                          onClick={() =>
+                            onChangeQuantity(item.id, item.quantity - 1)
+                          }
+                        >
+                          -
+                        </button>
+                        <span className={style.quantity}>{item.quantity}</span>
+                        <button
+                          className={style.buttonQuantity}
+                          onClick={() =>
+                            onChangeQuantity(item.id, item.quantity + 1)
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
+                    ) : (
                       <span className={style.quantity}>{item.quantity}</span>
-                      <button
-                        className={style.buttonQuantity}
-                        onClick={() =>
-                          onChangeQuantity(item.id, item.quantity + 1)
-                        }
-                      >
-                        +
-                      </button>
-                    </div>
+                    )}
                   </td>
                   <td className={style.tableData}>
                     R$ {(item.price * item.quantity).toFixed(2)}
                   </td>
-                  <td className={style.tableData}>
-                    <button
-                      className={style.buttonQuantity}
-                      onClick={() => OnRemoveItem(item.id)}
-                    >
-                      <FaRegTrashAlt />
-                    </button>
-                  </td>
+                  {!readOnly && (
+                    <td className={style.tableData}>
+                      <button
+                        className={style.buttonQuantity}
+                        onClick={() => OnRemoveItem(item.id)}
+                      >
+                        <FaRegTrashAlt />
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>

@@ -1,0 +1,6 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-medium);
+  padding: var(--padding-xlarge);
+}

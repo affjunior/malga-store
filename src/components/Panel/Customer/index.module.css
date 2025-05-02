@@ -1,0 +1,19 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-medium);
+  padding: var(--padding-xlarge);
+}
+
+.label {
+  font-size: var(--font-size-medium);
+  font-weight: 700;
+  line-height: var(--line-height-medium);
+}
+
+.value {
+  font-size: var(--font-size-medium);
+  font-weight: 500;
+  line-height: var(--line-height-medium);
+  padding-left: var(--padding-small);
+}

@@ -26,7 +26,7 @@
   gap: var(--gap-xxlarge);
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 768px) {
   .containerGrid {
     grid-template-columns: 1fr 1fr;
   }
