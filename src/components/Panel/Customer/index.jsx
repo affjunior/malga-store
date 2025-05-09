@@ -2,8 +2,6 @@ import style from './index.module.css'
 
 const PanelCustomer = ({ data }) => {
 
-  console.log(data)
-
   return (
     <div className={style.panel}>
         <p className={style.label}>Nome: <span className={style.value}>{data?.firstName} {data?.lastName}</span></p>
