@@ -22,6 +22,7 @@
 .tbody tr:hover {
   background-color: var(--color-hover-table-header);
   border-radius: var(--border-radius-large);
+  transition: background-color 0.2s ease;
 }
 
 .tableRow {
@@ -30,10 +31,15 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
 }
 
 .tableRow:has(.tableData) {
   cursor: pointer;
+}
+
+.tableRow:has(.tableData):hover {
+  background-color: var(--color-hover-table-header);
 }
 
 .tableData {
@@ -42,12 +48,10 @@
   font-weight: 700;
   padding: var(--padding-large);
   width: 100%;
-
   max-width: 260px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-
   text-overflow: ellipsis;
   overflow: hidden;
 }

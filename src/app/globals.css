@@ -36,11 +36,10 @@
   --gap-large: 1rem;
   --gap-xlarge: 1.5rem;
   --gap-xxlarge: 2rem;
+  --table-header-color: #000000;
+  --color-hover: #f4f4f4;
 
-  --table-header-color: #242424;
-
-  --color-hover: #626252;
-  --color-hover-table-header: #262626;
+  --color-hover-table-header: #e5e5e5;
 
   --error: #ff0000;
 }
@@ -52,6 +51,8 @@
     --border-color: #262626;
 
     --table-header-color: #a1a1a1;
+    --color-hover: #4a4a3a;
+    --color-hover-table-header: #1a1a1a;
 
     --error: #ff0000;
     --color-status-pending: #a0a0a0;
